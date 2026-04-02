@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closing Dua Legenda Grup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <header class="mb-10 text-left no-print">
+            <div class="title-frame shadow-sm">
+                <h1 class="text-2xl font-black text-gray-900 tracking-tighter uppercase">Dua Legenda Grup</h1>
+                <div class="h-0.5 bg-gray-900 my-1"></div>
+                <p class="text-[10px] font-bold text-gray-600 tracking-widest uppercase">Sistem Laporan Closing Harian</p>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="space-y-6 no-print">
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center mb-4 space-x-2">
+                        <i class="fas fa-cash-register text-blue-600"></i>
+                        <h2 class="text-xl font-semibold">Data Penjualan</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-gray-700">Nama Pelapor / Kasir</label>
+                            <input type="text" id="input-reporter" placeholder="Masukkan nama Anda" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border font-bold">
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block text-sm font-medium text-gray-700">Cabang</label>
+                            <select id="input-branch" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border font-bold">
+                                <option value="Depot 2 Legenda">Depot 2 Legenda</option>
+                                <option value="Pengyu Kopitiam">Pengyu Kopitiam</option>
+                                <option value="Warkop Tarkam">Warkop Tarkam</option>
+                                <option value="Warehouse 2 Legenda">Warehouse 2 Legenda</option>
+                            </select>
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700">Tanggal</label>
+                            <input type="date" id="input-date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block text-sm font-medium text-gray-700">Shift</label>
+                            <select id="input-shift" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                                <option value="Shift 1">Shift 1</option>
+                                <option value="Shift 2">Shift 2</option>
+                                <option value="Full Day">Full Day</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Modal Awal</label>
+                            <input type="number" id="input-modal" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Total Dine In (Omzet)</label>
+                            <input type="number" id="input-dinein" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Cash On Hand</label>
+                            <input type="number" id="input-cash" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">Transfer / QRIS</label>
+                            <input type="number" id="input-qris" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shopping-cart text-red-600"></i>
+                            <h2 class="text-xl font-semibold">Pengeluaran & Nota</h2>
+                        </div>
+                        <button onclick="addExpenseRow()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm transition">
+                            <i class="fas fa-plus mr-1"></i> Tambah
+                        </button>
+                    </div>
+                    <div id="expense-container" class="space-y-3 expense-list pr-2"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="exportToExcel()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center">
+                        <i class="fas fa-file-excel mr-2"></i> Export Excel
+                    </button>
+                    <button onclick="printReceipt()" class="bg-gray-800 hover:bg-black text-white font-bold py-
