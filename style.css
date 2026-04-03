@@ -1,33 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
-body {
-    background-color: #f3f4f6;
+body { 
+    background-color: #f3f4f6; 
+    font-family: sans-serif; 
 }
 
-.receipt-font {
-    font-family: 'Courier Prime', monospace;
+.receipt-font { 
+    font-family: 'Courier Prime', monospace; 
 }
 
-.receipt-container {
-    background-color: #fff;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Watermark melintang di tengah */
+/* Watermark diagonal melintang */
 .watermark {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%) rotate(-35deg);
-    opacity: 0.07;
-    font-size: 34px;
-    line-height: 1.2;
+    opacity: 0.08;
+    font-size: 32px;
     pointer-events: none;
     white-space: pre-wrap;
     font-weight: 900;
@@ -36,86 +24,34 @@ body {
     width: 150%;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
-.receipt-content {
+.receipt-container {
+    background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    max-width: 380px;
+    margin: auto;
+    padding: 15px;
     position: relative;
-    z-index: 10;
+    overflow: hidden;
 }
 
-.receipt-header {
-    border-bottom: 2px dashed #000;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
+.receipt-content { position: relative; z-index: 10; }
+.dashed-line { border-top: 1px dashed #000; margin: 8px 0; }
+.title-frame { border: 3px double #1f2937; padding: 1rem; background: white; border-radius: 0.375rem; display: inline-block; }
 
-.receipt-footer {
-    border-top: 2px dashed #000;
-    margin-top: 10px;
-    padding-top: 10px;
-}
-
-.dashed-line {
-    border-top: 1px dashed #000;
-    margin: 8px 0;
-}
-
-.title-frame {
-    border: 3px double #1f2937;
-    padding: 1rem 1.5rem;
-    background: white;
-    border-radius: 0.375rem;
-    display: inline-block;
-}
-
-/* Logic Print Sesuai Tombol */
+/* PRINT LOGIC */
 @media print {
-    body * {
-        visibility: hidden;
-    }
+    @page { margin: 0; }
+    body { background: white; padding: 0; margin: 0; }
+    .no-print { display: none !important; }
     
-    /* Thermal Mode */
-    body.print-receipt #receipt-preview, 
-    body.print-receipt #receipt-preview * {
-        visibility: visible;
-    }
-    body.print-receipt #receipt-preview {
-        position: absolute; left: 0; top: 0; width: 100%; box-shadow: none; border: none;
-    }
-
-    /* A4 PDF Mode */
-    body.print-pdf #pdf-archive-report, 
-    body.print-pdf #pdf-archive-report * {
-        visibility: visible;
-    }
-    body.print-pdf #pdf-archive-report {
-        position: absolute; left: 0; top: 0; width: 100%;
-    }
-
-    /* Attachment Mode */
-    body.print-attachment #attachment-report, 
-    body.print-attachment #attachment-report * {
-        visibility: visible;
-    }
-    body.print-attachment #attachment-report {
-        position: absolute; left: 0; top: 0; width: 100%;
-    }
-
-    .no-print {
-        display: none !important;
-    }
+    body > *:not(#print-area) { display: none !important; }
+    #print-area { display: block !important; width: 100%; visibility: visible !important; }
+    #print-area * { visibility: visible !important; }
 }
 
-.expense-list {
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.image-preview-thumb {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-}
+#print-area { display: none; }
+.expense-list { max-height: 400px; overflow-y: auto; }
+.image-preview-thumb { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
