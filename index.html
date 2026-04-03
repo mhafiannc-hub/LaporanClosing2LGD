@@ -4,39 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Closing Dua Legenda Grup</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="p-4 md:p-8">
 
-    <div class="max-w-6xl mx-auto">
-        <header class="mb-10 text-left no-print">
+    <div class="max-w-6xl mx-auto no-print">
+        <header class="mb-8 text-left">
             <div class="title-frame shadow-sm">
                 <h1 class="text-2xl font-black text-gray-900 tracking-tighter uppercase">Dua Legenda Grup</h1>
                 <div class="h-0.5 bg-gray-900 my-1"></div>
-                <p class="text-[10px] font-bold text-gray-600 tracking-widest uppercase">Sistem Laporan Closing Harian</p>
+                <p class="text-[10px] font-bold text-gray-600 tracking-widest uppercase">Laporan Closing Harian v2.0</p>
             </div>
         </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <div class="space-y-6 no-print">
-                
+            <div class="space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex items-center mb-4 space-x-2">
-                        <i class="fas fa-cash-register text-blue-600"></i>
-                        <h2 class="text-xl font-semibold">Data Penjualan</h2>
-                    </div>
+                    <h2 class="text-lg font-bold mb-4 flex items-center"><i class="fas fa-file-invoice-dollar mr-2 text-blue-600"></i>Data Penjualan</h2>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="col-span-2">
-                            <label class="block text-sm font-medium text-gray-700">Nama Pelapor / Kasir</label>
-                            <input type="text" id="input-reporter" placeholder="Masukkan nama Anda" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border font-bold">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Nama Kasir</label>
+                            <input type="text" id="input-reporter" class="mt-1 block w-full rounded border-gray-300 p-2 border font-bold">
                         </div>
                         <div class="col-span-2">
-                            <label class="block text-sm font-medium text-gray-700">Cabang</label>
-                            <select id="input-branch" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border font-bold">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Cabang</label>
+                            <select id="input-branch" class="mt-1 block w-full rounded border-gray-300 p-2 border font-bold">
                                 <option value="Depot 2 Legenda">Depot 2 Legenda</option>
                                 <option value="Pengyu Kopitiam">Pengyu Kopitiam</option>
                                 <option value="Warkop Tarkam">Warkop Tarkam</option>
@@ -44,169 +41,129 @@
                             </select>
                         </div>
                         <div class="col-span-1">
-                            <label class="block text-sm font-medium text-gray-700">Tanggal</label>
-                            <input type="date" id="input-date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Tanggal</label>
+                            <input type="date" id="input-date" class="mt-1 block w-full rounded border-gray-300 p-2 border">
                         </div>
                         <div class="col-span-1">
-                            <label class="block text-sm font-medium text-gray-700">Shift</label>
-                            <select id="input-shift" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Shift</label>
+                            <select id="input-shift" class="mt-1 block w-full rounded border-gray-300 p-2 border">
                                 <option value="Shift 1">Shift 1</option>
                                 <option value="Shift 2">Shift 2</option>
                                 <option value="Full Day">Full Day</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Modal Awal</label>
-                            <input type="number" id="input-modal" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        <div class="col-span-1">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Modal Awal</label>
+                            <input type="number" id="input-modal" value="0" class="mt-1 block w-full rounded border-gray-300 p-2 border bg-blue-50">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Total Dine In (Omzet)</label>
-                            <input type="number" id="input-dinein" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        <div class="col-span-1">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Omzet (Dine In)</label>
+                            <input type="number" id="input-dinein" value="0" class="mt-1 block w-full rounded border-gray-300 p-2 border">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Cash On Hand</label>
-                            <input type="number" id="input-cash" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        <div class="col-span-1">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Uang Cash</label>
+                            <input type="number" id="input-cash" value="0" class="mt-1 block w-full rounded border-gray-300 p-2 border">
                         </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700">Transfer / QRIS</label>
-                            <input type="number" id="input-qris" value="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
+                        <div class="col-span-1">
+                            <label class="block text-xs font-bold text-gray-500 uppercase">Uang QRIS/Transfer</label>
+                            <input type="number" id="input-qris" value="0" class="mt-1 block w-full rounded border-gray-300 p-2 border">
                         </div>
                     </div>
                 </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex items-center justify-between mb-4">
-                        <div class="flex items-center space-x-2">
-                            <i class="fas fa-shopping-cart text-red-600"></i>
-                            <h2 class="text-xl font-semibold">Pengeluaran & Nota</h2>
-                        </div>
-                        <button onclick="addExpenseRow()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm transition">
-                            <i class="fas fa-plus mr-1"></i> Tambah
-                        </button>
+                    <h2 class="text-lg font-bold mb-4 flex items-center"><i class="fas fa-tags mr-2 text-purple-600"></i>Kategori Pengeluaran</h2>
+                    <div class="flex gap-2 mb-4">
+                        <input type="text" id="new-cat-input" placeholder="Nama kategori baru..." class="flex-1 rounded border border-gray-300 p-2 text-sm">
+                        <button onclick="addCategory()" class="bg-purple-600 text-white px-4 py-2 rounded text-sm font-bold hover:bg-purple-700">Tambah</button>
                     </div>
-                    <div id="expense-container" class="space-y-3 expense-list pr-2"></div>
+                    <div id="category-chips" class="flex flex-wrap gap-2"></div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="exportToExcel()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-lg font-bold flex items-center"><i class="fas fa-shopping-basket mr-2 text-red-600"></i>Daftar Pengeluaran</h2>
+                        <button onclick="addExpenseRow()" class="bg-blue-600 text-white px-3 py-1 rounded text-sm font-bold hover:bg-blue-700">+ Baris</button>
+                    </div>
+                    <div id="expense-container" class="space-y-4 expense-list"></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 pb-20">
+                    <button onclick="exportToExcel()" class="bg-green-600 text-white font-bold py-3 rounded-xl shadow hover:bg-green-700 flex items-center justify-center">
                         <i class="fas fa-file-excel mr-2"></i> Export Excel
                     </button>
-                    <button onclick="printReceipt()" class="bg-gray-800 hover:bg-black text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center">
-                        <i class="fas fa-print mr-2"></i> Cetak Struk Kasir
+                    <button onclick="printType('receipt')" class="bg-gray-800 text-white font-bold py-3 rounded-xl shadow hover:bg-black flex items-center justify-center">
+                        <i class="fas fa-print mr-2"></i> Struk Kasir
                     </button>
-                    <button onclick="printPDFArchive()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center">
-                        <i class="fas fa-file-pdf mr-2"></i> Simpan PDF (Arsip A4)
+                    <button onclick="printType('pdf')" class="bg-orange-500 text-white font-bold py-3 rounded-xl shadow hover:bg-orange-600 flex items-center justify-center">
+                        <i class="fas fa-file-pdf mr-2"></i> Arsip A4 (PDF)
                     </button>
-                    <button onclick="printAttachments()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl shadow transition flex items-center justify-center">
+                    <button onclick="printType('attachment')" class="bg-blue-500 text-white font-bold py-3 rounded-xl shadow hover:bg-blue-600 flex items-center justify-center">
                         <i class="fas fa-images mr-2"></i> Lampiran Nota
                     </button>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center no-print">
-                <div class="w-full sticky top-8">
-                    <h2 class="text-center text-lg font-bold text-gray-500 mb-4 uppercase tracking-widest text-xs">Preview Laporan</h2>
+            <div>
+                <div class="sticky top-8 space-y-6">
+                    <h2 class="text-center font-bold text-gray-400 uppercase tracking-widest text-xs">Live Preview Struk</h2>
                     
-                    <div id="receipt-preview" class="receipt-container receipt-font text-sm text-black">
+                    <div id="receipt-preview" class="receipt-container receipt-font text-[13px] text-black shadow-lg">
                         <div class="watermark">Copyright Dua Legenda Grup 2026</div>
                         <div class="receipt-content">
-                            <div class="receipt-header text-center">
-                                <div class="font-bold text-xl uppercase" id="res-branch-display">DEPOT 2 LEGENDA</div>
-                                <div class="text-[10px] italic">Unit of Dua Legenda Grup</div>
+                            <div class="text-center mb-2">
+                                <div class="font-bold text-lg uppercase" id="res-branch">DEPOT 2 LEGENDA</div>
+                                <div class="text-[10px] italic">Dua Legenda Grup</div>
                                 <div class="dashed-line"></div>
-                                <div class="text-xs mt-1" id="res-date-display">Tgl: -</div>
-                                <div class="text-xs uppercase" id="res-shift-display">Shift: -</div>
-                                <div class="text-xs font-bold mt-1" id="res-reporter-display">Pelapor: -</div>
+                                <div class="flex justify-between text-[11px]">
+                                    <span id="res-date">Tgl: -</span>
+                                    <span id="res-shift" class="uppercase">Shift: -</span>
+                                </div>
+                                <div class="text-left text-[11px] font-bold" id="res-reporter">Kasir: -</div>
                             </div>
-                            <div class="my-2">
-                                <div class="font-bold mb-1 uppercase">Penjualan:</div>
-                                <div class="flex justify-between"><span>Total Dine In:</span><span id="res-dinein">Rp 0</span></div>
+
+                            <div class="space-y-1">
+                                <div class="font-bold uppercase border-b border-black inline-block mb-1">Penjualan</div>
+                                <div class="flex justify-between"><span>Omzet (Dine In):</span><span id="res-dinein">Rp 0</span></div>
                                 <div class="flex justify-between"><span>Total Cash:</span><span id="res-cash">Rp 0</span></div>
                                 <div class="flex justify-between"><span>Total QRIS:</span><span id="res-qris">Rp 0</span></div>
-                                <div class="flex justify-between italic text-gray-700"><span>Modal Awal (-):</span><span id="res-modal">Rp 0</span></div>
-                                <div class="flex justify-between font-bold mt-1 border-t border-black pt-1"><span>TOTAL DIDAPAT:</span><span id="res-total-income">Rp 0</span></div>
+                                <div class="flex justify-between italic text-gray-600"><span>Modal Awal (-):</span><span id="res-modal">Rp 0</span></div>
+                                <div class="flex justify-between font-bold border-t border-black pt-1">
+                                    <span>TOTAL DIDAPAT:</span><span id="res-total-income">Rp 0</span>
+                                </div>
                             </div>
+
                             <div class="dashed-line"></div>
-                            <div class="font-bold mb-1 uppercase tracking-tighter">PENGELUARAN:</div>
-                            <div id="res-expense-list" class="text-xs space-y-1">
-                                <div class="text-center italic text-gray-400">Belum ada pengeluaran</div>
+                            <div class="font-bold uppercase mb-1">Pengeluaran:</div>
+                            <div id="res-expense-list" class="space-y-1 text-[11px]">
+                                <div class="text-center italic opacity-40 py-2">Tidak ada data</div>
                             </div>
-                            <div class="flex justify-between font-bold mt-2"><span>TOTAL KELUAR:</span><span id="res-total-expense">Rp 0</span></div>
+                            <div class="flex justify-between font-bold mt-2">
+                                <span>TOTAL KELUAR:</span><span id="res-total-expense">Rp 0</span>
+                            </div>
+
                             <div class="receipt-footer mt-4">
-                                <div class="flex justify-between font-bold text-base"><span>LABA KOTOR:</span><span id="res-gross-profit">Rp 0</span></div>
+                                <div class="flex justify-between font-bold text-[15px]">
+                                    <span>LABA KOTOR:</span><span id="res-gross-profit">Rp 0</span>
+                                </div>
                                 <div class="dashed-line"></div>
-                                <div class="flex justify-between font-bold"><span>SELISIH:</span><span id="res-gap" class="text-black">Rp 0</span></div>
-                                <div class="text-[9px] mt-6 text-center italic opacity-70">
-                                    * Total Didapat = (Cash + Qris) - Modal Awal<br>
-                                    * Selisih = (Total Didapat - Laba Kotor)<br>
-                                    Dicetak pada: <span id="print-timestamp">-</span><br>
-                                    <span class="font-bold uppercase mt-1 block tracking-widest">Copyright Dua Legenda Grup 2026</span>
+                                <div class="flex justify-between font-bold">
+                                    <span>SELISIH:</span><span id="res-gap">Rp 0</span>
+                                </div>
+                                <div class="text-[9px] mt-4 text-center italic opacity-60">
+                                    * Didapat = (Cash + Qris) - Modal Awal<br>
+                                    * Selisih = Didapat - Laba Kotor<br>
+                                    Copyright Dua Legenda Grup 2026
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="msg-box" class="hidden mt-4 p-3 bg-green-100 text-green-700 rounded-lg text-center font-medium border border-green-200 transition-all">
-                        Laporan Berhasil Diekspor!
-                    </div>
                 </div>
             </div>
         </div>
-
-        <div id="pdf-archive-report" class="hidden p-12 bg-white border border-gray-200">
-            <div class="flex justify-between items-start border-b-2 border-gray-900 pb-4">
-                <div>
-                    <h1 class="text-3xl font-black uppercase text-gray-900">Dua Legenda Grup</h1>
-                    <p class="text-sm font-bold text-gray-600" id="pdf-branch-title">CABANG: -</p>
-                </div>
-                <div class="text-right">
-                    <p class="text-lg font-bold">LAPORAN CLOSING HARIAN</p>
-                    <p class="text-sm" id="pdf-date-shift">-</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-2 gap-10 mt-8">
-                <div>
-                    <h3 class="text-lg font-bold border-b border-gray-300 mb-3 uppercase">Informasi Dasar</h3>
-                    <div class="space-y-1"><div class="flex justify-between"><span>Pelapor / Kasir:</span><span class="font-bold" id="pdf-reporter">-</span></div></div>
-                    <h3 class="text-lg font-bold border-b border-gray-300 mt-6 mb-3 uppercase">Ringkasan Penjualan</h3>
-                    <div class="space-y-1">
-                        <div class="flex justify-between"><span>Omzet (Dine In):</span><span class="font-bold" id="pdf-dinein">-</span></div>
-                        <div class="flex justify-between"><span>Uang Cash:</span><span class="font-bold" id="pdf-cash">-</span></div>
-                        <div class="flex justify-between"><span>Transfer/QRIS:</span><span class="font-bold" id="pdf-qris">-</span></div>
-                        <div class="flex justify-between italic text-gray-600"><span>Modal Awal (-):</span><span id="pdf-modal">-</span></div>
-                        <div class="flex justify-between border-t border-gray-200 pt-1 mt-1"><span class="font-black">TOTAL DIDAPAT:</span><span class="font-black" id="pdf-total-income">-</span></div>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold border-b border-gray-300 mb-3 uppercase">Hasil Akhir</h3>
-                    <div class="p-4 bg-gray-100 rounded-lg space-y-2">
-                        <div class="flex justify-between text-lg"><span>Total Keluar:</span><span class="font-bold text-red-600" id="pdf-total-expense">-</span></div>
-                        <div class="flex justify-between text-lg"><span>Laba Kotor:</span><span class="font-bold" id="pdf-gross-profit">-</span></div>
-                        <div class="flex justify-between text-xl border-t-2 border-gray-400 pt-2"><span class="font-black">SELISIH:</span><span class="font-black" id="pdf-gap">-</span></div>
-                    </div>
-                </div>
-            </div>
-            <h3 class="text-lg font-bold border-b border-gray-300 mt-10 mb-4 uppercase">Rincian Pengeluaran</h3>
-            <table class="w-full text-sm border-collapse">
-                <thead><tr class="bg-gray-200"><th class="border p-2 text-left">Deskripsi</th><th class="border p-2 text-left">Kategori</th><th class="border p-2 text-center">Qty</th><th class="border p-2 text-right">Subtotal</th></tr></thead>
-                <tbody id="pdf-expense-table"></tbody>
-            </table>
-            <div class="mt-20 flex justify-end gap-20">
-                <div class="text-center"><p class="mb-16">Disetujui Oleh,</p><div class="w-40 border-b border-black"></div><p class="text-sm font-bold">Owner / Manager</p></div>
-                <div class="text-center"><p class="mb-16">Dibuat Oleh,</p><div class="w-40 border-b border-black"></div><p class="text-sm font-bold" id="pdf-reporter-sign">-</p></div>
-            </div>
-            <div class="mt-10 text-[10px] text-center text-gray-400 italic">Dicetak pada: <span id="pdf-timestamp">-</span> | Copyright Dua Legenda Grup 2026</div>
-        </div>
-
-        <div id="attachment-report" class="hidden mt-20 p-8 bg-white border border-gray-300">
-            <h1 class="text-2xl font-bold text-center border-b-2 border-black pb-4 uppercase">Lampiran Foto Nota Pengeluaran</h1>
-            <div class="mt-4 flex justify-between text-sm font-bold"><span id="att-branch">-</span><span id="att-date">-</span></div>
-            <p class="text-sm italic mb-6">Pelapor: <span id="att-reporter">-</span></p>
-            <div id="attachment-grid" class="grid grid-cols-2 gap-8"></div>
-            <div class="mt-10 pt-4 border-t border-dashed border-gray-400 text-center text-xs">Copyright Dua Legenda Grup 2026</div>
-        </div>
-
-        <footer class="mt-12 text-center text-gray-400 text-[10px] no-print">&copy; 2026 Dua Legenda Grup.</footer>
     </div>
+
+    <div id="print-area"></div>
 
     <script src="script.js"></script>
 </body>
