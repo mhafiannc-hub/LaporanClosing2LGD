@@ -1,18 +1,21 @@
+/* Font Khusus Struk Kasir */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
-body { 
-    background-color: #f3f4f6; 
-    font-family: sans-serif; 
+body {
+    background-color: #f3f4f6;
+    font-family: sans-serif;
+    color: #1f2937;
 }
 
-.receipt-font { 
-    font-family: 'Courier Prime', monospace; 
+.receipt-font {
+    font-family: 'Courier Prime', monospace;
 }
 
-/* Watermark diagonal melintang */
+/* Watermark melintang diagonal untuk mencegah manipulasi foto editor */
 .watermark {
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%) rotate(-35deg);
     opacity: 0.08;
     font-size: 32px;
@@ -24,11 +27,12 @@ body {
     width: 150%;
     text-align: center;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .receipt-container {
     background-color: #fff;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     border: 1px solid #e5e7eb;
     max-width: 380px;
     margin: auto;
@@ -37,21 +41,90 @@ body {
     overflow: hidden;
 }
 
-.receipt-content { position: relative; z-index: 10; }
-.dashed-line { border-top: 1px dashed #000; margin: 8px 0; }
-.title-frame { border: 3px double #1f2937; padding: 1rem; background: white; border-radius: 0.375rem; display: inline-block; }
-
-/* PRINT LOGIC */
-@media print {
-    @page { margin: 0; }
-    body { background: white; padding: 0; margin: 0; }
-    .no-print { display: none !important; }
-    
-    body > *:not(#print-area) { display: none !important; }
-    #print-area { display: block !important; width: 100%; visibility: visible !important; }
-    #print-area * { visibility: visible !important; }
+.receipt-content {
+    position: relative;
+    z-index: 10;
 }
 
-#print-area { display: none; }
-.expense-list { max-height: 400px; overflow-y: auto; }
-.image-preview-thumb { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; border: 1px solid #ddd; }
+.dashed-line {
+    border-top: 1px dashed #000;
+    margin: 8px 0;
+}
+
+.title-frame {
+    border: 3px double #1f2937;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.375rem;
+    display: inline-block;
+}
+
+/* --- PRINT LOGIC --- */
+@media print {
+    @page {
+        margin: 1cm;
+        size: auto;
+    }
+    body {
+        background: white;
+        padding: 0;
+        margin: 0;
+    }
+    .no-print {
+        display: none !important;
+    }
+    
+    /* Hanya elemen di dalam #print-area yang tampil saat cetak */
+    body > *:not(#print-area) {
+        display: none !important;
+    }
+    #print-area {
+        display: block !important;
+        width: 100%;
+        visibility: visible !important;
+    }
+    #print-area * {
+        visibility: visible !important;
+    }
+    
+    /* Paksa pindah halaman pada PDF */
+    .page-break {
+        page-break-before: always;
+    }
+}
+
+#print-area {
+    display: none;
+}
+
+/* Scrollbar halus untuk daftar input */
+.expense-list {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.image-preview-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    transition: transform 0.2s;
+}
+
+.image-preview-thumb:hover {
+    transform: scale(1.15);
+    z-index: 50;
+}
